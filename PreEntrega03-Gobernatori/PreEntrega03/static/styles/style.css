@@ -2,7 +2,15 @@ body{
     margin: 0;
 }
 
-ul {
+html { 
+    background: url(../images/Background.avif) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+header ul {
     list-style-type: none;
     margin: 0;
     padding: 5px;
@@ -10,11 +18,11 @@ ul {
     background-color: #333;
 }
 
-li {
+header li {
     float: left;
 }
 
-li a {
+header li a {
     display: block;
     color: white;
     text-align: center;
@@ -22,6 +30,22 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
+header li a:hover {
     background-color: #111;
+}
+
+#cover{
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    font-size: larger;
+    border-radius: 15px;
+}
+
+#content{
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 15px;
 }

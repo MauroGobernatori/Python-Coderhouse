@@ -1,5 +1,41 @@
 {% extends "main.html" %}
 {% load static %}
 {% block contenidoQueCambia %}
-<div>Inicio</div>
+
+<div>Página de Inicio</div>
+<form action="{% url 'inicio' %}" method="get">
+    <label for="comision">Comisión: </label><input type="number" name="comision" id="comision">
+    <input type="submit" value="Buscar">
+</form>
+
+{% if cursos %}
+
+<div id="busqueda">
+    <div>
+        Búsqueda por comisión:
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>Curso</td>
+                <td>Comisión</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for curso in cursos %}
+            <tr>
+                <td>{{curso.nombre}}</td>
+                <td>{{curso.comision}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endif %}
+
+
+
+
+
 {% endblock %}
