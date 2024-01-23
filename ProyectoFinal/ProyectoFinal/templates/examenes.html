@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+<div>Página de Exámenes</div>
+<form action="{% url 'examenes' %}" method="post" class="form">{% csrf_token %}
+
+    <table>
+        {{form.as_table}}
+    </table>
+    <input type="submit" value="Enviar">
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Curso</th>
+            <th>Comisión</th>
+            <th>Alumno</th>
+            <th>Nombre</th>
+            <th>Nota</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for examen in examenes %}
+        <tr>
+            <td>{{examen.fecha}}</td>
+            <td>{{examen.curso.nombre}}</td>
+            <td>{{examen.curso.comision}}</td>
+            <td>{{examen.estudiante}}</td>
+            <td>{{examen.nombre}}</td>
+            <td>{{examen.nota}}</td>
+            <td>
+                <button><a href="{% url 'editar_examen' examen.id %}">Editar</a></button>
+                <button><a href="{% url 'eliminar_examen' examen.id %}">Eliminar</a></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+<div>Página de Profesores</div>
+<form action="{% url 'profesores' %}" method="post" class="form">{% csrf_token %}
+
+    <table>
+        {{form.as_table}}
+    </table>
+    <input type="submit" value="Enviar">
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Legajo</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for profesor in profesores %}
+        <tr>
+            <td>{{profesor.legajo}}</td>
+            <td>{{profesor.nombre}}</td>
+            <td>{{profesor.apellido}}</td>
+            <td>{{profesor.email}}</td>
+            <td>
+                <button><a href="{% url 'editar_profesor' profesor.id %}">Editar</a></button>
+                <button><a href="{% url 'eliminar_profesor' profesor.id %}">Eliminar</a></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

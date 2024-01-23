@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <title>ProyectoFinal</title>
+</head>
+<body>
+    <!-- Este es el template que va a ser heredado por los demás templates -->
+    
+    <header>
+        <ul>
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'cursos' %}">Cursos</a></li>
+            <li><a href="{% url 'profesores' %}">Profesores</a></li>
+            <li><a href="{% url 'estudiantes' %}">Estudiantes</a></li>
+            <li><a href="{% url 'examenes' %}">Exámenes</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li>
+                <form method="post" action="{% url 'logout' %}">
+                    {%csrf_token%}
+                    <button type="submit">Cerrar Sesion</button>
+                </form>
+            </li>
+        </ul>
+    </header>
+
+    <div id="cover">
+        <p>CODERHOUSE</p>
+        <p>Curso Python</p>
+        <p>Mauro Gobernatori</p>
+    </div>
+
+    <div id="content">
+
+    <!-- Contenido que cambia -->
+
+    {% block contenidoQueCambia %}
+
+    {% endblock %}
+
+    <!--  -->
+
+    </div>
+
+    <footer>
+        <div>Mauro Co.</div>
+    </footer>
+</body>
+</html>

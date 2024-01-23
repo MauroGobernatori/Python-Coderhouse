@@ -1,0 +1,44 @@
+{% extends "main.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+<div>Página de Cursos</div>
+<form action="{% url 'cursos' %}" method="post" class="form">{% csrf_token %}
+
+    <table>
+        {{form.as_table}}
+    </table>
+    <input type="submit" value="Enviar">
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Curso</th>
+            <th>Comisión</th>
+            <th>Profesor</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for curso in cursos %}
+        <tr>
+            <td>{{curso.nombre}}</td>
+            <td>{{curso.comision}}</td>
+
+            {% if curso.profesor %}
+            <td>{{curso.profesor}}</td>
+            {% else %}
+            <td> - </td>
+            {% endif %}
+
+            <td>
+                <button><a href="{% url 'editar_curso' curso.id %}">Editar</a></button>
+                <button><a href="{% url 'eliminar_curso' curso.id %}">Eliminar</a></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

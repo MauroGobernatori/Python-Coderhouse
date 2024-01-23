@@ -1,16 +1,17 @@
 # Python-Coderhouse
 
-Template padre: main.html
-El resto de los templates son hijos.
+# Proyecto Final
 
-Dentro de la carpeta static se encuentra una imagen (que se usa de background) y una hoja de estilos
+El proyecto final consta de un sistema de un Instituto Educativo. Tiene 4 modelos, Cursos, Profesores, Estudiantes y Exámenes.  
 
-Las urls se encuentran dentro de la app AppCoder, en el archivo urls.py. El archivo urls.py de la carpeta PreEntrega03 incluye el archivo mencionado anteriormente.
+Cada Curso tiene un Profesor y puede tener varios Estudiantes, y cada Exámen pertenece a un Curso y Estudiante.  
 
-Las funciones de las vistas se encuentran en el archivo views.py
+El sistema puede realizar un CRUD de cada modelo.  
 
-Dentro de forms.py se encuentran los formularios que se utilizan para el alta de cursos, profesores, estudiantes y exámenes
+Cuenta de una barra de navegación en donde se puede circular por las diferentes páginas. Cada modelo tiene su propia página, y adicionalmente hay una página de inicio y una de about.  
 
-Dentro de models.py se encuentran los modelos a utilizar
+Hay un template padre (main.html) del cual heredan otro templates.  
 
-En admin.py agregamos estos modelos para poder visualizarlos en localhost:8000/admin
+La página principal una vez dado de alta el servidor con el comando 'python manage.py runserver' es 'localhost:8000/instituto'.  
+
+El sistema cuenta con un sistema de Login y Registro, por lo que se debe iniciar sesión para entrar al sistema. Se puede iniciar sesión desde la url 'localhost:8000/instituto/login' y registrarse desde 'localhost:8000/instituto/register'

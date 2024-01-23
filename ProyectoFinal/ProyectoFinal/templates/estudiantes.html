@@ -1,0 +1,54 @@
+{% extends "main.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+<div>Página de Estudiantes</div>
+<form action="{% url 'estudiantes' %}" method="post" class="form">{% csrf_token %}
+
+    <table>
+        {{form.as_table}}
+    </table>
+    <input type="submit" value="Enviar">
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Legajo</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha Nacimiento</th>
+            <th>Email</th>
+            <th>Cursos</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for estudiante in estudiantes %}
+            <tr>
+                <td>{{estudiante.legajo}}</td>
+                <td>{{estudiante.nombre}}</td>
+                <td>{{estudiante.apellido}}</td>
+                <td>{{estudiante.fecha_nac}}</td>
+                <td>{{estudiante.email}}</td>
+                <td>
+                    {% if estudiante.cursos %}
+                        {% for cursos in estudiante.cursos %}
+                            {% for curso in cursos %}
+                                [{{curso.nombre}} - {{curso.comision}}]
+                            {% endfor %}
+                        {% endfor %}
+                    {% else %}
+                    -
+                    {% endif %}
+                </td>
+                <td>
+                    <button><a href="{% url 'editar_estudiante' estudiante.id %}">Editar</a></button>
+                    <button><a href="{% url 'eliminar_estudiante' estudiante.id %}">Eliminar</a></button>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <title>Editar Examen</title>
+</head>
+
+<body>
+    <form action="{% url 'editar_examen' id_examen %}" method="post" class="form">{% csrf_token%}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input type="submit" value="Editar">
+        <button class="cancelar"><a href="{% url 'examenes' %}">Cancelar</a></button>
+    </form>
+    
+</body>
+
+</html>
